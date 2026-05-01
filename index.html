@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Bird - Premium Flappy Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Background elements for visual flair -->
+        <div class="bg-layer stars"></div>
+        
+        <div id="ui-layer">
+            <!-- Start Screen -->
+            <div id="start-screen" class="screen active">
+                <h1>Neon Bird</h1>
+                <p>Tap, Space, or Click to fly</p>
+                <button id="start-btn" class="glass-btn">Start Game</button>
+            </div>
+
+            <!-- Game HUD -->
+            <div id="game-hud" class="screen">
+                <div id="score-display">0</div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="game-over-screen" class="screen">
+                <h2>Game Over</h2>
+                <div class="score-board glass-panel">
+                    <div class="score-row">
+                        <span>Score</span>
+                        <span id="final-score">0</span>
+                    </div>
+                    <div class="score-row">
+                        <span>Best</span>
+                        <span id="best-score">0</span>
+                    </div>
+                </div>
+                <button id="restart-btn" class="glass-btn">Play Again</button>
+            </div>
+        </div>
+
+        <canvas id="game-canvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

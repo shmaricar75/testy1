@@ -1,0 +1,202 @@
+:root {
+    --bg-color: #0b0c10;
+    --primary: #66fcf1;
+    --secondary: #45a29e;
+    --accent: #ff007f;
+    --text: #c5c6c7;
+    --glass-bg: rgba(11, 12, 16, 0.6);
+    --glass-border: rgba(102, 252, 241, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    max-width: 480px;
+    height: 100vh;
+    max-height: 800px;
+    background: linear-gradient(180deg, #1f2833 0%, #0b0c10 100%);
+    box-shadow: 0 0 50px rgba(102, 252, 241, 0.1);
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    position: relative;
+}
+
+#ui-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 2rem;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+}
+
+.glass-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.glass-btn:hover {
+    background: rgba(102, 252, 241, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.4);
+    transform: translateY(-2px);
+}
+
+.glass-btn:active {
+    transform: translateY(1px);
+}
+
+#game-hud {
+    justify-content: flex-start;
+    padding-top: 4rem;
+}
+
+#score-display {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 300px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.score-row:last-child {
+    margin-bottom: 0;
+}
+
+.score-row span:last-child {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* Background Animations */
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: stars-anim 100s linear infinite;
+}
+
+@keyframes stars-anim {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 1000px; }
+}
+
+@media (min-width: 481px) {
+    #game-container {
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+    }
+}
